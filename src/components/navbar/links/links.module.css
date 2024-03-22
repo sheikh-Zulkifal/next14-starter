@@ -1,0 +1,39 @@
+.links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.logout {
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+.menueButton,
+.mobileLinks {
+  display: none;
+}
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .menueButton {
+    display: block;
+    cursor: pointer;
+   
+  }
+  .mobileLinks {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 50%;
+    height: calc(100vh - 100px);
+    /* background-color: var(--bg); */
+    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
