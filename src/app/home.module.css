@@ -8,19 +8,19 @@
   display: flex;
   gap: 50px;
 }
-.title {
+/* .title {
   font-size: 96px;
-}
-.desc {
+} */
+/* .desc {
   font-size: 20px;
-}
+} */
 .buttons {
   display: flex;
   gap: 20px;
 }
 .button {
-  padding: 20px;
-  min-width: 120px;
+  padding: 14px;
+  min-width: 100px;
   cursor: pointer;
   border: none;
   border-radius: 5px;

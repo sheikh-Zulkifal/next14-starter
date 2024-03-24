@@ -4,6 +4,7 @@
   height: 100px;
   align-items: center;
   color: gray;
+  padding-top: 20px;
 }
 .logo{
     font-weight: bold;
