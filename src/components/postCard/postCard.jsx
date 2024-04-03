@@ -3,6 +3,15 @@ import styles from "./postCard.module.css";
 import Link from "next/link";
 
 const PostCard = ({ post }) => {
+  const formatPublishDate = (createdAt) => {
+    const date = new Date(createdAt);
+    return date.toLocaleString("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -11,9 +20,7 @@ const PostCard = ({ post }) => {
             <Image className={styles.img} src={post.img} alt="" fill />
           </div>
         )}
-        <span className={styles.date}>
-          {post.createdAt?.toString().slice(4, 16)}
-        </span>
+        <span className={styles.date}>{formatPublishDate(post.createdAt)}</span>
       </div>
       <div className={styles.bottom}>
         <h1 className={styles.title}>{post.title}</h1>

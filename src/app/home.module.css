@@ -41,6 +41,7 @@
 .imageContainer {
   flex: 1;
   position: relative;
+  object-fit: cover;
 }
 @media (max-width: 1024px) {
   .container {

@@ -32,8 +32,8 @@ export const getUser = async (id) => {
     const user = await User.findById(id);
     return user;
   } catch (error) {
-    console.log(error);
-    throw new Error("Failed to fetch user!");
+    // console.log(error);
+    // throw new Error("Failed to fetch user!");
   }
 };
 

@@ -18,10 +18,12 @@ const PostUser = async ({ userId }) => {
   // const user = await getData(userId);
   // WithOut an Api
   const user = await getUser(userId);
+  // if (!user) return null;
+  console.log(user);
   return (
     <div className={styles.container}>
       <Image
-        src={user.img ? user.img : '/noavatar.png'}
+        src={user?.img ? user.img : '/noavatar.png'}
         alt=""
         width={50}
         height={50}
@@ -29,7 +31,7 @@ const PostUser = async ({ userId }) => {
       />
       <div className={styles.texts}>
         <span className={styles.title}>Author</span>
-        <span className={styles.username}>{user.username}</span>
+        <span className={styles.username}>{user?.username}</span>
       </div>
     </div>
   );

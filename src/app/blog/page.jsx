@@ -3,14 +3,18 @@ import styles from "./blog.module.css";
 import { getPosts } from "@/lib/data";
 
 // Fetch data  with an APi
-const getData = async () => {
+const getData = async () => { 
   const res = await fetch("http://localhost:3000/api/blog", {
     next: { revalidate: 3600 },
   });
   if (!res.ok) {
     throw new Error("Something went wrong");
+
   }
-  return res.json();
+const data = await res.json();
+console.log()
+  return data;
+
 };
 
 export const metadata = {

@@ -4,27 +4,34 @@ import PostUser from "@/components/postUser/postUser";
 import { Suspense } from "react";
 import { getPost } from "@/lib/data";
 
- const getData = async (slug) => {
-   const res = await fetch(`http://localhost:3000/api/blog/${slug}`,); // {method: "DELETE" }
-   if (!res.ok) {
-     throw new Error("Something went wrong");
-   }
-   return res.json();
- };
+const getData = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  return res.json();
+};
+
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
-  const post = await getPost(slug);
+  const post = await getData(slug);
   return {
     title: post.title,
     description: post.desc,
   };
 };
 
+const formatPublishDate = (createdAt) => {
+  const date = new Date(createdAt);
+  return date.toLocaleString("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  });
+};
+
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
-  // Fetch data without an API
- // const post = await getPost(slug);
-  // Fetch data with an API
   const post = await getData(slug);
 
   return (
@@ -44,8 +51,9 @@ const SinglePostPage = async ({ params }) => {
           )}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Publish</span>
-           
-            <span className={styles.detailValue}> {post.createdAt.toString().slice(4,16)}</span>
+            <span className={styles.detailValue}>
+              {formatPublishDate(post.createdAt)}
+            </span>
           </div>
         </div>
         <div className={styles.content}>{post.desc}</div>
